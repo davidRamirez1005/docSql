@@ -20,6 +20,23 @@ alter table usuario add column email varchar(100) not null;
 
 alter table usuario add constraint UC_correo unique(email);
 
+INSERT INTO nombre_de_la_tabla (columna1, columna2, columna3, ...)
+VALUES (valor1, valor2, valor3, ...);
+
+UPDATE nombre_de_la_tabla
+SET columna1 = valor1, columna2 = valor2, ...
+WHERE condicion;
+
+
+DELETE FROM nombre_de_la_tabla; TRUNCATE TABLE nombre_de_la_tabla; 
+
+SELECT nombre_de_los_campos
+FROM nombre_de_las_tablas
+WHERE condición
+ORDER BY especificacion_de_ordenacion
+LIMIT límite_registros_devueltos
+
+
 select * from usuario where nombre like "j%";
 
 
