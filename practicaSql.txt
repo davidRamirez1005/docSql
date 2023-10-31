@@ -31,3 +31,11 @@ mysqldump -u campus -p --no-data informacion > dbInsert.sql
 
 // se deben borrar los drops primero
 mysql -u campus -p informacion < dbInformacion.sql
+
+
+
+git init
+git add .
+git commit -m "comit"
+git remote add origin https://github.com/davidRamirez1005/ejemploGit.git
+git push -u origin main -f
