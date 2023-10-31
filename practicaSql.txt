@@ -1,0 +1,33 @@
+
+mysql -l campus -u
+
+show databases;
+
+create database informacion;
+
+use informacion;
+
+create table usuario(
+    -> id int not null,
+    -> nombre varchar(255) not null,
+    -> apellido varchar(255));
+
+describe usuario;
+
+alter table usuario add constraint pk_cedula primary key(id);
+
+alter table usuario add column email varchar(100) not null;
+
+alter table usuario add constraint UC_correo unique(email);
+
+select * from usuario where nombre like "j%";
+
+
+// solo deja los inserts
+mysqldump -u campus -p --no-create-info informacion > dbInsert.sql
+
+// solo deja los creates
+mysqldump -u campus -p --no-data informacion > dbInsert.sql
+
+// se deben borrar los drops primero
+mysql -u campus -p informacion < dbInformacion.sql
