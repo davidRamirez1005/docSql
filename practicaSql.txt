@@ -1,5 +1,5 @@
 
-mysql -l campus -u
+mysql -u campus -p
 
 show databases;
 
@@ -27,10 +27,11 @@ select * from usuario where nombre like "j%";
 mysqldump -u campus -p --no-create-info informacion > dbInsert.sql
 
 // solo deja los creates
-mysqldump -u campus -p --no-data informacion > dbInsert.sql
+mysqldump -u campus -p --no-data informacion > dbInformacion.sql
 
 // se deben borrar los drops primero
 mysql -u campus -p informacion < dbInformacion.sql
+mysql -u campus -p informacion < dbInsert.sql
 
 
 
