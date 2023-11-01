@@ -1,0 +1,66 @@
+use Ejemplo;
+CREATE TABLE ususario;
+CREATE TABLE usuario ( id INT, nombre VARCHAR(50), edad INT, correo_electronico VARCHAR(100) );
+ALTER TABLE usuario ADD CONSTRAINT pk_identificacion PRIMARY KEY(id);
+ALTER TABLE usuario ADD CONSTRAINT usuario UNIQUE(ID);
+ALTER TABLE usuario ADD usuarioId INT;
+ALTER TABLE usuario MODIFY id INT AUTO_INCREMENT;
+INSERT INTO usuario(id, nombre, edad, correo_electronico, usuarioID) VALUES (1,"jose",19,"jose@gmail.com",1);
+SELECT edad, usuarioID, CONCAT(nombre, ' - ', correo_electronico) AS nombre_y_correo FROM usuario GROUP BY edad, usuarioId, nombre_y_correo;
+
+
+//Alias de campos
+SELECTcolumna AS alias FROM tabla;
+//Alias de Campo Simple:
+SELECT nombre AS cliente_nombre, edad AS
+edad_cliente FROM clientes;
+//Alias de Campo con Funciones:
+SELECT AVG(precio) AS promedio_precio FROM
+productos;
+//Alias de Campo con Expresiones:
+SELECT cantidad * precio AS total FROM pedidos;
+//Alias de tablas
+SELECT columna1, columna2, ...
+FROM tabla AS alias;
+//Alias de tabla simple:
+SELECT u.nombre, u.edad
+FROM usuarios AS u;
+
+
+
+SELECT COUNT(*) AS total_usuarios FROM usuarios;
+
+SELECT * FROM usuarios WHERE nombre = "Jon";
+
+SELECT * FROM caballeros ORDER BY nombre DESC;
+
+SELECT * FROM usuarios WHERE nombre IN ("Jon", "kEnAi", "Irma");
+
+SELECT * FROM usuarios WHERE apellidos LIKE 'M%';
+
+SELECT * FROM usuarios WHERE correo LIKE '%@gmail.com';
+
+SELECT * FROM usuarios WHERE nombre LIKE '%it%';
+
+SELECT signo, COUNT(*) AS total FROM caballeros GROUP BY signo;
+
+SELECT rango, COUNT(*) AS total FROM caballeros WHERE ejercito = "Athena" GROUP BY rango; 
+
+SELECT * FROM productos WHERE precio BETWEEN 5000 AND 15000;
+
+SELECT nombre, precio, MAX(precio) AS precio_maximo FROM productos GROUP BY precio, nombre HAVING precio_maximo >= 10000;
+
+
+UPDATE usuarios SET correo = "irma@gmail.com", direccion = "Dirección de Irma" WHERE usuario_id = 3;
+
+# Columnas Calculadas
+SELECT nombre, precio, cantidad, (precio * cantidad) AS ganancia FROM productos;
+
+# Funciones de Agrupamiento
+SELECT MAX(precio) AS precio_maximo FROM productos;
+SELECT MIN(precio) AS precio_minimo FROM productos;
+SELECT SUM(cantidad) AS existencias FROM productos;
+SELECT AVG(precio) AS precio_promedio FROM productos;
+SELECT COUNT(*) AS productos_total FROM productos;
+
+SELECT nombre, precio, MAX(precio) AS precio_maximo FROM productos GROUP BY precio, nombre;

@@ -1,0 +1,31 @@
+SELECT mascota.nombre,mascota.especie,mascota.raza,mascota.fechaNac, duenio_Mascota.nombres,duenio_Mascota.apellidos,duenio_Mascota.cedula AS cedula
+FROM mascota
+INNER JOIN duenio_Mascota ON mascota.id_duenio = duenio_Mascota.id;`,
+
+
+
+SELECT pais.nombre AS pais, ciudad.nombre AS ciudad
+FROM pais
+INNER JOIN ciudad
+ON pais.id = ciudad.id_pais
+WHERE pais.nombre = "México"
+
+
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+//contar el numero de idiomas que no se hablan en ningun pais
+SELECT COUNT(*) INTO num_idiomas_sin_pai
+FROM idioma
+WHERE id NOT IN(SELECT id_idioma FROM idioma_pais)
+
+
+
+SELECT cita.id,cita.fecha,cita.motivoCita, cita.costo,duenio_Mascota.cedula as cedula_duenio,duenio_Mascota.nombres as nombre_duenio,duenio_Mascota.apellidos as apellidos_duenio,duenio_Mascota.telefono as telefono_duenio,duenio_Mascota.correo as correo_duenio, mascota.nombre as nombre_mascota,mascota.especie, mascota.raza,veterinario.nombres as veterinario_cargo,veterinario.cedula as veterinario_cedula
+FROM cita
+INNER JOIN mascota ON mascota.id = cita.id_mascota
+INNER JOIN veterinario ON veterinario.id = cita.id_veterinario
+INNER JOIN duenio_Mascota ON duenio_Mascota.id = mascota.id_duenio
+WHERE cita.fecha <= CURDATE();
